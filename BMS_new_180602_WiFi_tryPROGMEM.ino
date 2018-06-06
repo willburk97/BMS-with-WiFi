@@ -55,6 +55,10 @@ void setup() {
   pinMode(RemoteInputPin, INPUT);
   delay(2000);
   sendData("AT+RST\r\n",6000); // reset module
+//  sendData("AT+CWMODE_DEF=1\r\n", 5000); // I used a command like this to setup esp8266 initially. 
+//  sendData("AT+CWJAP_DEF=\"MySSIDhere\",\"mypassword\"\r\n", 5000); //  this too for initial setup...remove the \ if sending directly 
+//  sendData("AT+CWAUTOCONN=1\r\n", 5000); //  might need this too for initial setup  
+//  sendData("AT+UART_DEF=115200,8,1,0,0\r\n", 5000); //  maybe this too for initial setup. I needed 115200 to get iOS to load the webpage.
   sendData("AT+CIPMUX=1\r\n",200); // configure for multiple connections
   sendData("AT+CIPSERVER=1,80\r\n",500); // turn on server on port 80
   digitalWrite(ledpin,HIGH);
